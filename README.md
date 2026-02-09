@@ -7,9 +7,9 @@ to execute the full Software Development Lifecycle (SDLC) with enterprise-grade 
 This is not a code generator.  
 This is not autonomous AI.
 
-This is an **AI operating model** for building production software **safely, transparently, and under human control**.
+CouncilAI is an **AI operating model** that enables humans to **orchestrate AI agents safely, transparently, and with full accountability**.
 
-CouncilAI enforces:
+It enforces:
 - Human-in-the-loop decision making
 - Behavioral safety constraints for AI agents
 - Regulatory and compliance readiness
@@ -19,6 +19,7 @@ CouncilAI enforces:
 
 ## Core Principles
 - Single-Responsibility AI Agents
+- Humans as orchestrators, not code typists
 - Safety over speed
 - Human oversight by default
 - Evidence-based decision making
@@ -42,34 +43,36 @@ authority boundaries, and behavioral constraints:
 - Testing Agent
 - Release & Governance Agent
 
-Agents produce **proposals**, not final decisions.  
-High-impact or irreversible outcomes require governance review.
+Agents generate **proposals**, not final decisions.
 
-All agents operate under a mandatory **Behavioral Safety Contract**.
+All irreversible, high-risk, or compliance-impacting actions require governance
+review and human approval.
+
+Each agent operates under a mandatory **Behavioral Safety Contract**.
 
 ---
 
 ### Council
-The Council is a structured debate and resolution protocol that:
+The Council is a structured debate and resolution protocol that governs agent output.
 
+It:
 - Resolves cross-agent conflicts
 - Enforces safety and compliance constraints
 - Applies regulatory veto power when required
 - Records architectural, product, and risk decisions
-- Governs releases and approval gates
+- Governs release readiness
 - Defaults to the safest option during disagreement
 
-No critical decision is executed without council review and traceability.
+The Council acts as the **decision boundary between AI autonomy and human authority**.
 
 ---
 
 ### Safety & Behavioral Governance
 CouncilAI explicitly governs **AI behavior**, not just SDLC process flow.
 
-All agents are bound by a mandatory Behavioral Safety Contract that enforces:
-
+All agents are bound by a Behavioral Safety Contract that enforces:
 - Clarification over assumption
-- Human approval for irreversible or high-risk actions
+- Human approval for irreversible actions
 - Rejection of unsafe, misleading, or deceptive outputs
 - Escalation on ambiguity, conflict, or compliance risk
 
@@ -106,23 +109,22 @@ CouncilAI enforces a non-skippable SDLC flow:
 6. Council Debate (if required)
 7. Release Governance
 
-Each stage produces verifiable artifacts.  
-No stage can be skipped or silently bypassed.
+Each stage produces verifiable artifacts.
+Agent work may span **multiple sessions or days**, with state preserved through
+versioned documents and decision records.
 
 ---
 
 ## How CouncilAI Is Used
-CouncilAI supports multiple execution modes:
 
 1. **Manual Mode**  
-   Teams follow the protocols and agent definitions using human-led execution.
+   Humans execute the agents by following the protocols directly.
 
 2. **AI-Assisted Mode**  
-   Each agent prompt is executed via an LLM (e.g., ChatGPT, Claude),
-   with outputs committed as versioned artifacts.
+   Each agent prompt is executed via an LLM, with outputs committed as artifacts.
 
 3. **Automated Mode (Planned)**  
-   CouncilAI runners, CI/CD gates, and dashboards execute and enforce the system automatically.
+   Runners, CI/CD gates, and dashboards will enforce CouncilAI automatically.
 
 ---
 
@@ -137,43 +139,30 @@ CouncilAI supports multiple execution modes:
 **CouncilAI IS:**
 - A governance layer for AI-driven development
 - A compliance-first SDLC operating system
-- A trust framework for building AI-powered software
+- A trust framework for agentic software development
 - A foundation for regulated, enterprise-grade systems
 
 ---
 
 ## Who Should Use This
-CouncilAI is designed for teams that need **speed with trust**:
-
 - Solo founders building serious AI products
 - AI-first startups preparing for enterprise adoption
 - Enterprise innovation teams
 - Regulated industries (FinTech, HealthTech, GovTech)
 
-If your product must withstand audits, scale safely, or earn customer trust,
-CouncilAI is for you.
-
 ---
 
 ## What Makes CouncilAI Different
-Unlike prompt libraries or agent orchestration tools, CouncilAI:
+CouncilAI governs **decision-making**, not just task execution.
 
-- Governs AI behavior, not just task execution
+It:
+- Treats AI output as advisory, not authoritative
+- Preserves human accountability
 - Prevents unsafe autonomy by design
-- Treats AI outputs as inputs to governance, not final truth
-- Makes compliance and safety first-class citizens
-- Provides a durable system of record for decisions and risks
+- Creates a durable audit trail for AI-driven development
 
 CouncilAI is not an AI assistant.  
 It is an **AI governance system**.
-
----
-
-## Why This Exists
-AI systems fail not because they are weak —  
-but because they lack **governance, safety constraints, and accountability**.
-
-CouncilAI makes AI behave like a world-class engineering organization.
 
 ---
 
@@ -189,13 +178,13 @@ CouncilAI makes AI behave like a world-class engineering organization.
 ## Status
 CouncilAI is currently in **Protocol v1.0 (Specification Complete)**.
 
-Execution tooling is intentionally decoupled from governance
-to preserve trust, auditability, and correctness.
+Execution tooling is intentionally decoupled from governance to preserve trust,
+auditability, and correctness.
 
 ---
 
 ## License & Usage
 This repository represents a reusable AI-driven SDLC framework.
 
-Licensing, commercialization, and execution layers can be added
-without modifying the core governance model.
+Licensing, commercialization, and execution layers can be added without modifying
+the core governance model.
