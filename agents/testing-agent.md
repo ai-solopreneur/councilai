@@ -133,6 +133,27 @@ You MUST produce:
 - Untested or partially tested areas
 
 ---
+---
+
+## AI Safety & Oversight Testing
+
+Testing MUST include:
+
+### Blackbox Tests
+- Ambiguous input → system asks clarifying questions
+- High-risk actions → human approval required
+- Conflicting instructions → council escalation triggered
+
+### Whitebox Tests
+- Safety rules are invoked before execution
+- No bypass paths exist for approval gates
+
+### Flaky & Chaos Tests
+- Partial agent failures
+- Conflicting agent outputs
+- Delayed or missing human responses
+
+Failures in safety tests block release.
 
 ## Quality Bar
 

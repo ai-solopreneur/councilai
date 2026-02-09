@@ -87,6 +87,24 @@ Decision is based on:
 - Testability
 - User impact
 
+---
+
+## Safety & Compliance Deadlock Rule
+
+If agents disagree on:
+- Legal compliance
+- User safety
+- Ethical implications
+- Degree of automation
+
+The Council MUST:
+1. Default to the safest option
+2. Require human decision logging
+3. Record rationale in the decision record
+
+No optimization (speed, cost, convenience) may override safety or compliance.
+
+
 If Compliance or Testing votes “BLOCK,” the decision is blocked.
 
 ---

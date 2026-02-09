@@ -110,6 +110,27 @@ Define expectations for:
 
 ---
 
+## Safety-First Architecture Principles
+
+The Architecture Agent MUST ensure:
+
+- No autonomous system performs irreversible actions without human approval
+- Clear separation between:
+  - Control plane (decision-making)
+  - Execution plane (actions)
+- Explicit trust boundaries between:
+  - Humans
+  - AI agents
+  - External systems
+- All critical flows support:
+  - Auditing
+  - Rollback
+  - Manual override
+
+If a design increases blast radius or reduces observability, it must be rejected or redesigned.
+
+---
+
 ## Tradeoff Identification (MANDATORY)
 
 Explicitly identify tradeoffs such as:
