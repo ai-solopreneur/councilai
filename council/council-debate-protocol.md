@@ -136,6 +136,32 @@ Automatic escalation if:
 
 ---
 
+## Intelligent Escalation Triggers
+
+AI agents MUST escalate to the Council when any of the following occur:
+
+- Conflicting outputs between agents
+- Regulatory or legal ambiguity
+- Risk severity classified as High or Critical
+- Architecture changes impacting security, cost, or scalability
+- Instructions that could result in irreversible actions
+
+Agents are prohibited from silently proceeding under uncertainty.
+
+---
+
+## Human Authority Boundary
+
+The Council represents the boundary between AI autonomy and human authority.
+
+- AI agents propose
+- The Council evaluates
+- Humans approve or reject
+
+Final accountability always remains with human decision-makers.
+
+---
+
 ## Release Authority
 
 A release is allowed only if:
