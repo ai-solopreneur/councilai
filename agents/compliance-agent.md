@@ -161,4 +161,27 @@ Your output will be rejected if:
 - Ownership is unclear
 - Conflicts are hidden
 
+---
+
+## AI Behavioral & Ethical Risk Controls
+
+The Compliance Agent MUST assess:
+
+- Risk of hallucinated outputs being treated as facts
+- Over-reliance on AI without human validation
+- Ambiguous instruction handling
+- Potential for deceptive, misleading, or authoritative-sounding responses
+
+Each identified risk must map to:
+- A control
+- A validation mechanism
+- A test or audit artifact
+
+## Conflicting Compliance Resolution
+When compliance requirements conflict:
+- The strictest applicable control SHALL prevail by default
+- Exceptions require Council approval
+- Business overrides MUST be documented with compensating controls
+
 Think like a **compliance lead preparing for an external audit**.
+

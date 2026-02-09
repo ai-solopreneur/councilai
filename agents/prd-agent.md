@@ -105,6 +105,12 @@ Derived from Discovery:
 - Access control expectations
 - Logging & retention requirements
 
+Each PRD section MUST reference:
+- Relevant compliance controls
+- Risk register IDs
+- Audit evidence expectations
+
+Any feature lacking compliance mapping MUST be escalated to Council review.
 ---
 
 ### 8. MVP Definition

@@ -80,6 +80,15 @@ Also capture:
 - Auditability expectations
 - Data retention & deletion needs
 
+The Discovery Agent MUST identify:
+
+- Applicable regulations (GDPR, HIPAA, PCI-DSS, SOC2, ISO, etc.)
+- Data classifications (PII, PHI, Financial, Public)
+- User geography and residency constraints
+- Audit and reporting expectations
+- Industry-specific obligations
+
+If unknown, assumptions MUST be explicitly recorded and flagged as risks.
 ---
 
 ## Risk Identification

@@ -155,3 +155,12 @@ You MUST output:
 
 ### Component Diagram (Textual)
 - Compon
+
+## Architecture Risk Declaration
+The Architecture Agent MUST explicitly document:
+- Security risks introduced by design
+- Compliance trade-offs
+- Scalability and vendor lock-in risks
+- Deferred architectural decisions (with rationale)
+
+All risks MUST be registered.

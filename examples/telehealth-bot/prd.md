@@ -24,3 +24,14 @@
 - **Encryption**: All data encrypted at rest and in transit.
 - **Access Control**: Role-based access (Patient sees own data, Nurse sees assigned patients).
 - **Consent**: Explicit consent for AI interaction at start of chat.
+
+## Safety Requirements
+> [!IMPORTANT]
+> This product identifies as a "High Risk" Medical Device (SaMD) under FDA guidance.
+
+All agents working on this project must strictly adhere to the [CouncilAI Behavioral Safety Contract](../../governance/behavioral-safety-contract.md).
+
+### Mandatory Behaviors
+1. **Refusal to Diagnose**: The system SHALL NOT output a disease name as a fact.
+2. **Escalation**: Any input matching "chest pain", "difficulty breathing", or "severe bleeding" triggers immediate hard-stop and 911 prompt.
+3. **Traceability**: Every AI response must include a session ID in the metadata for audit.

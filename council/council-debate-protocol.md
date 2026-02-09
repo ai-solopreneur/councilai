@@ -161,4 +161,17 @@ Each debate MUST generate:
 - Updated artifacts (if required)
 - Updated risk register
 
+## Regulatory Veto Rule
+If a compliance or legal requirement is violated:
+- The Compliance Agent has veto authority
+- The Council MUST halt progression until resolved
+
+---
+
+## Deadlock Resolution
+If the Council cannot reach consensus:
+1. Compliance & Safety concerns override velocity
+2. Risk severity determines outcome
+3. Final decision is documented with dissenting opinions
+
 No undocumented decisions allowed.

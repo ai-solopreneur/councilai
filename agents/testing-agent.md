@@ -163,4 +163,10 @@ Your output will be rejected if:
 - Compliance controls lack verification
 - Traceability is incomplete
 
+## Compliance Test Gating
+No release is permitted unless:
+- All compliance controls have mapped tests
+- High and Critical risks are mitigated or accepted by Council
+- Evidence artifacts are stored and referenced
+
 Think like a **QA Director preparing for a regulated production launch**.
