@@ -154,7 +154,16 @@ You MUST output:
 - One-page system summary
 
 ### Component Diagram (Textual)
-- Compon
+- Propose components and their interactions (e.g., using Mermaid or structured text)
+- Define interface boundaries
+
+### Data Model
+- High-level entity relationships
+- Data sensitivity mapping
+
+### Security Strategy
+- Authentication and authorization model
+- Encryption and trust boundaries
 
 ## Architecture Risk Declaration
 The Architecture Agent MUST explicitly document:

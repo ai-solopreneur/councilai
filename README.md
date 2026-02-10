@@ -17,36 +17,56 @@ It enforces:
 
 ---
 
+## 🚀 Quick Start (Installation)
+
+To get started with CouncilAI, you need to set up the execution runner.
+
+### 1. Set Up Environment
+```bash
+# Clone the repository
+git clone https://github.com/ai-solopreneur/councilai.git
+cd councilai
+
+# Create and activate a virtual environment
+python3 -m venv test_env
+source test_env/bin/activate
+
+# Install the runner in editable mode
+pip install -e runner/
+```
+
+### 2. Configure LLM
+Create a `.env` file in the `runner/` directory with your API keys.
+```bash
+cp runner/.env.example runner/.env
+# Edit runner/.env with your OpenAI or Anthropic keys
+```
+
+### 3. Initialize Your Project
+CouncilAI can generate a professional product declaration from a simple idea:
+```bash
+# Initialize a new project context
+council init "Marketplace for locally sourced vegetables" --project fresh-market
+```
+
+### 4. Run the Full Lifecycle
+Execute every agent from Discovery to Release Governance in one shot:
+```bash
+# Run all agents in sequence
+council all --project fresh-market
+```
+
+For detailed agent-by-agent control and technical setup, see the [Runner Documentation](runner/README.md).
+
+---
+
 ## Core Principles
-- Single-Responsibility AI Agents
-- Humans as orchestrators, not code typists
-- Safety over speed
-- Human oversight by default
-- Evidence-based decision making
-- Compliance-first architecture
-- Test-driven validation
-- Explicit governance over autonomy
-- AI agents must ask, not assume
+... (existing principles) ...
 
 ---
 
 ## System Components
-
-### Agents
-CouncilAI is composed of specialized AI agents, each with clearly defined roles,
-authority boundaries, and behavioral constraints:
-
-- Discovery Agent
-- PRD Agent
-- Architecture Agent
-- Compliance Agent
-- Testing Agent
-- Release & Governance Agent
-
-Agents generate **proposals**, not final decisions.
-
-All irreversible, high-risk, or compliance-impacting actions require governance
-review and human approval.
+... (existing components) ...
 
 ---
 
@@ -54,123 +74,45 @@ review and human approval.
 
 CouncilAI agents execute in a **linear, artifact-driven flow**. Each agent reads approved artifacts from previous steps and produces a new artifact that becomes input for the next agent.
 
-### The Flow
+### The Automated Flow
+The `council all` command automates this sequence while maintaining human-in-the-loop safety:
 
 ```
-project-context.md
-      ↓
+project-context.md (Input)
+      ↓ discovery
 discovery.md
-      ↓
+      ↓ prd
 prd.md
-      ↓
+      ↓ architecture
 architecture.md
-      ↓
+      ↓ compliance
 compliance.md
-      ↓
-testing-strategy.md
-      ↓
-council-review
+      ↓ testing
+testing.md
+      ↓ release-governance
+release-governance.md
 ```
 
 ### Key Principles
 
-1. **Agents Don't Chat** — Each agent has a single, well-defined responsibility. There is no back-and-forth conversation.
+1. **Explicit Declaration** — CouncilAI doesn't guess. You declare your intent in `project-context.md` (via `council init`) and the system enforces it.
 
-2. **Artifacts Are Truth** — Agents only read approved, versioned artifacts. No hidden state, no inference.
+2. **Artifacts Are Truth** — Agents only read approved, versioned artifacts. No hidden state.
 
-3. **Each Output Becomes Next Input** — The discovery agent's output (`discovery.md`) becomes input for the PRD agent. The PRD agent's output (`prd.md`) becomes input for the architecture agent. And so on.
+3. **Fail-Fast Governance** — The `run-all` command will halt immediately if any agent fails or a compliance gate is blocked.
 
-4. **No Skipping Steps** — Skipping steps breaks governance. If you skip discovery and jump to architecture, you lose traceability and compliance readiness.
-
-### When Council Review Is Required
-
-The **Council** (human decision-makers) must review and approve:
-- High-risk architectural decisions
-- Compliance-impacting changes
-- Release decisions
-- Escalations flagged by agents
-
-Council decisions are recorded in `council-decisions.md` and become part of the audit trail.
+4. **Human Final Authority** — Automation generates *proposals*. Production readiness requires a human to sign the `council-decisions.md` audit record.
 
 ---
 
-Each agent operates under a mandatory **Behavioral Safety Contract**.
+## Execution Model
+CouncilAI provides a flexible execution layers:
 
----
+1. **Protocol (The Spec)**: The markdown agents in `agents/`.
+2. **Runner (The CLI)**: The `council` utility that executes agents via LLMs.
+3. **CI/CD (The Gates)**: Automated testing via GitHub Actions.
 
-### Council
-The Council is a structured debate and resolution protocol that governs agent output.
-
-It:
-- Resolves cross-agent conflicts
-- Enforces safety and compliance constraints
-- Applies regulatory veto power when required
-- Records architectural, product, and risk decisions
-- Governs release readiness
-- Defaults to the safest option during disagreement
-
-The Council acts as the **decision boundary between AI autonomy and human authority**.
-
----
-
-### Safety & Behavioral Governance
-CouncilAI explicitly governs **AI behavior**, not just SDLC process flow.
-
-All agents are bound by a Behavioral Safety Contract that enforces:
-- Clarification over assumption
-- Human approval for irreversible actions
-- Rejection of unsafe, misleading, or deceptive outputs
-- Escalation on ambiguity, conflict, or compliance risk
-
-See:
-- `governance/behavioral-safety-contract.md`
-
-Violations block release and require council resolution.
-
----
-
-### Compliance & Risk
-CouncilAI treats compliance as a continuous system property, not a phase.
-
-It includes:
-- Compliance Control → Test Matrix
-- Central Risk Register with ownership and lifecycle
-- Ethical and AI-behavioral risk tracking
-- Escalation and deadlock resolution rules
-- Audit-ready artifacts suitable for regulated environments
-
-Compliance conflicts default to the strictest applicable control unless explicitly
-overridden by council decision with documented rationale.
-
----
-
-### Execution Model
-CouncilAI enforces a non-skippable SDLC flow:
-
-1. Discovery
-2. Product Definition
-3. Architecture
-4. Compliance Analysis
-5. Testing & Verification
-6. Council Debate (if required)
-7. Release Governance
-
-Each stage produces verifiable artifacts.
-Agent work may span **multiple sessions or days**, with state preserved through
-versioned documents and decision records.
-
----
-
-## How CouncilAI Is Used
-
-1. **Manual Mode**  
-   Humans execute the agents by following the protocols directly.
-
-2. **AI-Assisted Mode**  
-   Each agent prompt is executed via an LLM, with outputs committed as artifacts.
-
-3. **Automated Mode (Planned)**  
-   Runners, CI/CD gates, and dashboards will enforce CouncilAI automatically.
+See [START_HERE.md](START_HERE.md) for the onboarding journey.
 
 ---
 

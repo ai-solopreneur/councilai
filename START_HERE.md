@@ -14,57 +14,60 @@ It helps you use AI safely, consistently, and auditably.
 
 ---
 
+## Prerequisites (Must Do First)
+
+Before you can run CouncilAI agents, you must set up the environment:
+
+1. **Activate Virtual Env**: `source test_env/bin/activate`
+2. **Setup LLM Config**: Ensure `runner/.env` has your API keys.
+3. **Verify Installation**: Run `council --help` to ensure the CLI is available.
+
+See the [Root README](README.md#🚀-quick-start-installation) for full setup instructions.
+
+---
+
 ## How to Use CouncilAI (15-Minute Start)
 
-### Step 1 — Pick a Project
-Choose a real project you want to build or improve.
+### Step 1: Initialize Your Project
 
-Example:
-- SaaS product
-- Internal tool
-- Regulated application
-- AI-powered service
+CouncilAI uses a "declarative" model. You don't tell the AI how to code; you declare what you are building and why.
 
----
+```bash
+# Initialize project with a brief idea
+council init "Medical triage chatbot for remote areas" --project med-bot
+```
 
-### Step 2 — Run Discovery
-Open `agents/discovery-agent.md`.
+This creates a `projects/med-bot/project-context.md` file. Review this file to ensure it captures your vision correctly.
 
-Answer its questions honestly.
-Commit the resulting `discovery.md`.
+### Step 2: Run the Full Lifecycle
 
----
+Now, execute the entire CouncilAI sequence in one pass. This will generate your Discovery, PRD, Architecture, Compliance, and Testing strategies.
 
-### Step 3 — Continue the Flow
-Follow the execution order:
-1. Discovery
-2. PRD
-3. Architecture
-4. Compliance
-5. Testing
-6. Council Review
+```bash
+# Run the full agent lifecycle
+council all --project med-bot
+```
 
-Each step produces a versioned artifact.
+**Why this matters:**
+This command ensures that no step is skipped and that every artifact (like your PRD) is built on top of the previous one (like Discovery). If a compliance gate is triggered (e.g., medical advice safety), the system will flag it for your review.
 
 ---
 
-## How CouncilAI Flows
+## 🛠️ After Running Agents
 
-CouncilAI does not infer intent. **You declare it once, and the system enforces it.**
+Once the agents complete, you will find a full audit trail in `projects/med-bot/`:
 
-### Artifact-Driven Execution
+- `discovery.md`: Stakeholders & Risks
+- `prd.md`: Product Requirements
+- `architecture.md`: System Design
+- `compliance.md`: Control Register
+- `testing.md`: Verification Strategy
 
-1. You declare your product in `projects/<project-name>/project-context.md`
-2. Agents read this context and previous artifacts
-3. Each agent produces one artifact
-4. The next agent reads that artifact
-5. No hidden state, no assumptions
-
-### Learn More
-
-- **Agent Flow:** See [How Agents Build on Each Other](README.md#how-agents-build-on-each-other) in the README
-- **Full Example:** Follow the [Telehealth Bot Walkthrough](docs/walkthrough-telehealth-bot.md)
+**Final Gate:** Review the artifacts and sign your **Council Decision** in `council-decisions.md`. Only then is your project "Release Ready".
 
 ---
 
-You now have an AI system that behaves like a professional engineering org.
+## 📚 Learn More
+- [How Agents Work Together](README.md#how-agents-build-on-each-other)
+- [Telehealth Bot Walkthrough](docs/walkthrough-telehealth-bot.md)
+- [Runner Technical Guide](runner/README.md)

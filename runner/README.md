@@ -21,6 +21,11 @@ cd runner
 pip install -e .
 ```
 
+> [!TIP]
+> If you get `zsh: command not found: council`, it means your virtual environment is not activated or the package is not installed. 
+> Run: `source test_env/bin/activate` (or your venv's activation script) from the project root.
+
+
 ### 2. Set Up API Keys
 
 Create a `.env` file in the `runner/` directory:
@@ -48,34 +53,34 @@ COUNCIL_ANTHROPIC_MODEL=claude-3-5-sonnet-20241022  # optional
 
 Follow these steps in order to build a new application with CouncilAI:
 
-### Step 1: Create Your Project
+### Step 1: Initialize Your Project
+
+You can now initialize a project from a simple idea. CouncilAI will generate a structured `project-context.md` for you.
 
 ```bash
-# Create project directory
-mkdir -p projects/my-app
-
-# Create project context (declare your product)
-cat > projects/my-app/project-context.md << 'EOF'
-# My Application
-
-## Problem
-[What problem are you solving?]
-
-## Solution
-[What are you building?]
-
-## Users
-[Who will use this?]
-
-## Compliance Needs
-[Any regulatory requirements? HIPAA, SOC2, GDPR, etc.]
-
-## Risk Tolerance
-[Low/Medium/High - how critical is this application?]
-EOF
+# Initialize project with a brief idea
+council init "Marketplace for locally sourced vegetables" --project fresh-market
 ```
 
-Edit `projects/my-app/project-context.md` with your actual project details.
+This creates `projects/fresh-market/project-context.md`. Edit this file if you need to refine the product vision.
+
+### Step 2: Run the Entire Lifecycle (Recommended)
+
+Instead of running agents one-by-one, you can run the full CouncilAI lifecycle in a single command:
+
+```bash
+# Run all agents from discovery to release-governance
+council all --project fresh-market
+```
+
+**What happens:**
+1. Runs `discovery`, `prd`, `architecture`, `compliance`, `testing`.
+2. Attempts to run `release-governance`.
+3. If you haven't reviewed artifacts and created `council-decisions.md`, the final step will show as **BLOCKED**.
+
+---
+
+## Detailed Agent Flow (Step-by-Step)
 
 ### Step 2: Run Discovery
 

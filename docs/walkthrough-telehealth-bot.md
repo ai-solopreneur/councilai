@@ -74,7 +74,7 @@ The **Discovery Agent** reads your project context and produces a structured dis
 ### Run the Agent
 
 ```bash
-council run discovery --project telehealth-bot
+council discovery --project telehealth-bot
 ```
 
 ### What Happens
@@ -109,7 +109,7 @@ The **PRD Agent** reads the discovery document and produces a Product Requiremen
 ### Run the Agent
 
 ```bash
-council run prd --project telehealth-bot
+council prd --project telehealth-bot
 ```
 
 ### What Happens
@@ -139,7 +139,7 @@ Continue the flow:
 ### Architecture
 
 ```bash
-council run architecture --project telehealth-bot
+council architecture --project telehealth-bot
 ```
 
 **Produces:** `architecture.md`  
@@ -148,7 +148,7 @@ council run architecture --project telehealth-bot
 ### Compliance
 
 ```bash
-council run compliance --project telehealth-bot
+council compliance --project telehealth-bot
 ```
 
 **Produces:** `compliance.md`  
@@ -157,7 +157,7 @@ council run compliance --project telehealth-bot
 ### Testing
 
 ```bash
-council run testing --project telehealth-bot
+council testing --project telehealth-bot
 ```
 
 **Produces:** `testing-strategy.md`  
@@ -244,7 +244,7 @@ These artifacts provide:
 
 - **Run this example yourself:**  
   ```bash
-  council run discovery --project telehealth-bot
+  council discovery --project telehealth-bot
   ```
 
 - **Adapt for your project:**  

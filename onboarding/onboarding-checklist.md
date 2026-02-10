@@ -1,12 +1,10 @@
 # CouncilAI Onboarding Checklist
 
 - [ ] Read START_HERE.md
-- [ ] Choose a project
-- [ ] Run Discovery Agent
-- [ ] Commit discovery.md
-- [ ] Run PRD Agent
-- [ ] Commit prd.md
-- [ ] Review architecture
-- [ ] Run compliance checks
-- [ ] Hold council if required
-- [ ] Commit all artifacts
+- [ ] Install dependencies (`pip install -e runner/`)
+- [ ] Configure `runner/.env` with API keys
+- [ ] Initialize project (`council init`)
+- [ ] Run full lifecycle (`council all`)
+- [ ] Review artifacts in `projects/<name>/`
+- [ ] Commit artifacts
+- [ ] hold council review and sign `council-decisions.md`
