@@ -2,7 +2,7 @@ from council_runner.llm import call_llm
 from council_runner.validation import validate_output
 
 def run_agent(agent: str):
-    prompt_path = f"../agents/{agent}-agent.md"
+    prompt_path = f"agents/{agent}-agent.md"
     output_path = f"{agent}.md"
 
     try:
