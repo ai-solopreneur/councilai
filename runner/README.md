@@ -59,7 +59,32 @@ council discovery
 # 4. Save to discovery.md
 ```
 
-### Custom Paths
+### Project-Scoped Execution (Recommended)
+
+Use `--project` to scope execution to a specific project:
+
+```bash
+# Run discovery for a specific project
+council run discovery --project telehealth-bot
+
+# This will:
+# 1. Read agents/discovery-agent.md (agent prompt)
+# 2. Read projects/telehealth-bot/project-context.md (project context)
+# 3. Inject context into the prompt
+# 4. Call your configured LLM
+# 5. Validate the output
+# 6. Save to projects/telehealth-bot/discovery.md
+```
+
+**Requirements:**
+- Project directory must exist: `projects/<project-name>/`
+- Project context must exist: `projects/<project-name>/project-context.md`
+
+**See:** [Telehealth Bot Walkthrough](../docs/walkthrough-telehealth-bot.md) for a complete example.
+
+### Custom Paths (Advanced)
+
+For advanced use cases, specify custom directories:
 
 ```bash
 # Specify custom project directory
@@ -71,6 +96,8 @@ council discovery --output-dir /path/to/output
 # Use both
 council discovery --project-dir /path/to/project --output-dir /tmp/artifacts
 ```
+
+**Note:** `--project` and `--project-dir`/`--output-dir` are mutually exclusive.
 
 ### Switch Providers
 
