@@ -1,6 +1,19 @@
 .DS_Store
 **/.DS_Store
 
+# Add these lines at the end:
+# Python cache
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+test_env/
+
 # Environment variables
 .env
 runner/.env
