@@ -68,6 +68,5 @@ Once the agents complete, you will find a full audit trail in `projects/med-bot/
 ---
 
 ## 📚 Learn More
-- [How Agents Work Together](README.md#how-agents-build-on-each-other)
-- [Telehealth Bot Walkthrough](docs/walkthrough-telehealth-bot.md)
+- [How Agents Build on Each Other](README.md#how-agents-build-on-each-other)
 - [Runner Technical Guide](runner/README.md)

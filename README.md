@@ -61,12 +61,26 @@ For detailed agent-by-agent control and technical setup, see the [Runner Documen
 ---
 
 ## Core Principles
-... (existing principles) ...
+- **Single-Responsibility AI Agents**: Each agent does one thing well.
+- **Humans as Orchestrators**: Humans approve high-stakes decisions.
+- **Safety Over Speed**: Rigorous validation at every stage.
+- **Human Oversight by Default**: No autonomous releases.
+- **Evidence-Based Decisions**: Every choice is backed by an artifact.
+- **Compliance-First**: Regulatory needs are identified early.
+- **Test-Driven Validation**: Proof of correctness is required.
 
 ---
 
 ## System Components
-... (existing components) ...
+
+### Agents
+CouncilAI is composed of specialized AI agents:
+- **Discovery Agent**: Maps stakeholders, goals, and initial risks.
+- **PRD Agent**: Translates vision into functional requirements.
+- **Architecture Agent**: Designs the system and identifies technical tradeoffs.
+- **Compliance Agent**: Maps requirements to regulatory controls.
+- **Testing Agent**: Creates strategy and traceability for verification.
+- **Release & Governance Agent**: Audits the entire trail before final sign-off.
 
 ---
 

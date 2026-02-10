@@ -1,80 +1,36 @@
-# Telehealth Triage Bot — Project Context
+# HealthAI Telehealth - Project Context
 
 ## Product Name
-**HealthFirst Triage Bot**
+HealthAI Telehealth
 
-## Problem
-Patients calling healthcare providers often wait 20+ minutes to speak with a nurse for basic triage. This creates:
-- Poor patient experience
-- Wasted clinical staff time on routine questions
-- Delayed care for urgent cases
-- High operational costs
+## Problem Statement
+Accessing healthcare services can be difficult for individuals living in remote areas or those unable to leave their homes due to various reasons. Additionally, the current healthcare system often lacks an efficient way of prioritizing patients based on their symptoms, leading to longer wait times.
 
-## Solution
-An AI-powered triage bot that:
-- Collects patient symptoms via chat interface
-- Assesses urgency level (emergency, urgent, routine)
-- Routes to appropriate care pathway
-- Provides clear next steps
-- **Does NOT provide medical advice or diagnosis**
+## Proposed Solution
+HealthAI Telehealth is a HIPAA-compliant mobile application that provides telehealth services to patients. The application will use AI triage to assess symptoms reported by users and prioritize them based on the urgency of their condition. This allows healthcare providers to manage their patients more effectively and ensure that those in critical need get immediate attention.
 
-## Users
-- **Primary**: Patients seeking initial triage
-- **Secondary**: Nurses reviewing bot recommendations
-- **Tertiary**: Healthcare administrators monitoring system
+## Target Users
+- Primary: Patients seeking immediate healthcare advice or services.
+- Secondary: Healthcare providers who are offering telehealth services.
 
-## Scope
+## Scope (MVP)
+- User registration and secure login.
+- Symptom input interface where users can report their symptoms.
+- AI triage system that assesses and prioritizes patients based on reported symptoms.
+- Video call functionality for telehealth appointments.
+- Secure messaging system for communication between patients and healthcare providers.
+- HIPAA-compliant data storage and transmission.
 
-### In Scope
-- Symptom collection via structured questions
-- Urgency classification (emergency / urgent / routine)
-- Care pathway routing
-- HIPAA-compliant data handling
-- Audit logging of all interactions
-- Human escalation triggers
+## Constraints & Risks
+- Technical: Building a robust and reliable AI triage system can be technically challenging.
+- Business: Ensuring a smooth user experience while complying with healthcare regulations. 
+- Security/Privacy: Handling sensitive health information requires high-level security measures to prevent data breaches.
 
-### Out of Scope
-- Medical diagnosis
-- Treatment recommendations
-- Prescription management
-- Direct scheduling (phase 2)
-- Integration with EHR systems (phase 2)
-
-## Constraints
-
-### Regulatory
-- **HIPAA compliance** (Protected Health Information handling)
-- **Medical device classification** (likely Class II - FDA guidance required)
-- **State telehealth regulations** (varies by state)
-
-### Technical
-- Must integrate with existing patient portal
-- Response time < 2 seconds
-- 99.9% uptime SLA
-- Encrypted data at rest and in transit
-
-### Behavioral Safety
-- **MUST refuse to provide medical advice**
-- **MUST escalate to human for:**
-  - Chest pain, difficulty breathing, severe bleeding
-  - Suicidal ideation
-  - Pediatric emergencies (< 2 years old)
-  - Pregnancy complications
-- **MUST clarify** it is not a doctor
-- **MUST log** all escalations
-
-## Compliance Needs
-- HIPAA (Protected Health Information)
-- SOC 2 Type II (data security)
-- FDA guidance for clinical decision support software
-- State-specific telehealth regulations
+## Compliance Needs (Initial Assessment)
+- HIPAA: As the app deals with personal health information, it must comply with the Health Insurance Portability and Accountability Act (HIPAA).
+- GDPR: If the app is available to users in the European Union, it must comply with the General Data Protection Regulation (GDPR).
 
 ## Success Criteria
-- 70% of routine cases handled without nurse intervention
-- < 5% false negatives (missed urgent cases)
-- 90% patient satisfaction score
-- Zero HIPAA violations
-- 100% audit trail completeness
-
-## Risk Tolerance
-**Low** — This is a healthcare application. Safety and compliance are non-negotiable.
+1. At least 80% of users report satisfaction with the AI triage system's accuracy.
+2. Decrease the average wait time for patients by 50% within the first year.
+3. Ensure 100% compliance with HIPAA and other relevant regulations.

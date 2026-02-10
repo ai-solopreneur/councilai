@@ -1,8 +1,9 @@
+# OS
 .DS_Store
 **/.DS_Store
+Thumbs.db
 
-# Add these lines at the end:
-# Python cache
+# Python
 __pycache__/
 **/__pycache__/
 *.py[cod]
@@ -46,6 +47,3 @@ htmlcov/
 *.swp
 *.swo
 *~
-
-# OS
-Thumbs.db

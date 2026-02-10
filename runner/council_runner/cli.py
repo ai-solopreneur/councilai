@@ -1,7 +1,15 @@
 import typer
 from council_runner.runner import run_agent
 
-app = typer.Typer()
+app = typer.Typer(
+    help="""
+    CouncilAI Utility: A governance-first, multi-agent AI framework for the SDLC.
+    
+    This utility allows you to initialize projects and run specialized agents (Discovery, PRD, Architecture, etc.) 
+    to build a robust, compliant, and audit-ready governance trail for your software.
+    """,
+    add_completion=False
+)
 
 @app.command()
 def run(
@@ -13,11 +21,16 @@ def run(
     """
     Run a single CouncilAI agent.
     
-    Use --project for project-scoped execution (recommended):
-        council run discovery --project telehealth-bot
+    Examples:
     
-    Or run all agents at once:
-        council all --project telehealth-bot
+    1. Run discovery for a named project (Recommended):
+       $ council run discovery --project my-app
+    
+    2. Run PRD agent with a shortcut:
+       $ council run prd -p my-app
+    
+    3. Run an agent with custom paths (Advanced):
+       $ council run discovery --project-dir ./custom --output-dir ./results
     """
     # Validate mutually exclusive options
     if project and (project_dir or output_dir):
@@ -40,10 +53,16 @@ def init(
     project: str = typer.Option(..., "--project", "-p", help="Project name (will create projects/<name>/)")
 ):
     """
-    Initialize a new project context from a brief idea.
+    Initialize a new project context from a brief idea. 
+    CouncilAI will expand your prompt into a full 'project-context.md' file.
     
-    Example:
-        council init "I want to build a bar bottle tracking app" --project my-bottle
+    Examples:
+    
+    1. Simple initialization:
+       $ council init "A marketplace for fresh vegetables" -p fresh-market
+    
+    2. Detailed initialization:
+       $ council init "HIPAA-compliant telehealth app with AI triage" -p health-bot
     """
     from council_runner.runner import init_project
     success = init_project(prompt, project)
@@ -55,10 +74,16 @@ def all_agents(
     project: str = typer.Option(..., "--project", "-p", help="Project name to run lifecycle for")
 ):
     """
-    Run the full CouncilAI agent lifecycle (discovery -> prd -> architecture -> compliance -> testing -> release-governance).
+    Run the full CouncilAI agent lifecycle in one shot.
+    Sequence: Discovery -> PRD -> Architecture -> Compliance -> Testing -> Release-Governance.
     
-    Example:
-        council all --project my-bottle
+    Examples:
+    
+    1. Run full lifecycle for my project:
+       $ council all --project my-app
+    
+    2. Using the -p shortcut:
+       $ council all -p my-app
     """
     from council_runner.runner import run_all_agents
     run_all_agents(project)
