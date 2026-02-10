@@ -3,13 +3,13 @@
 This showcase demonstrates how CouncilAI transforms a brief product spark into a professional, governance-ready artifact trail.
 
 ## 🚀 The Input
-**The Idea:** "I want to build a marketplace for locally sourced vegetables."
-**Command:** `council init "Marketplace for locally sourced vegetables" --project fresh-market`
+**The Idea:** "A mobile/web app for bars that lets customers purchase full bottles and track consumption across multiple visits to save money and reduce waste."
+**Command:** `council init "A mobile/web app for bars that lets customers purchase full bottles and track consumption across multiple visits" --project my-bottle`
 
 ---
 
 ## 🛠️ The Process (Automated)
-**Command:** `council all --project fresh-market`
+**Command:** `council all --project my-bottle`
 
 CouncilAI executes 6 specialized agents in a sequence, with each agent building on the evidence provided by the previous one.
 
@@ -25,7 +25,7 @@ Explore the artifacts generated for this project:
 | **1. Discovery** | [discovery.md](discovery.md) | Stakeholder mapping and risk identification. |
 | **2. Product** | [prd.md](prd.md) | High-fidelity functional requirements. |
 | **3. Design** | [architecture.md](architecture.md) | Technical blueprint and system components. |
-| **4. Legal** | [compliance.md](compliance.md) | Regulatory control mapping (GDPR/Marketplace laws). |
+| **4. Legal** | [compliance.md](compliance.md) | Regulatory control mapping (Liquor laws & Privacy). |
 | **5. Quality** | [testing.md](testing.md) | Traceability and verification strategy. |
 | **6. Result** | [release-governance.md](release-governance.md) | Final release readiness report. |
 
