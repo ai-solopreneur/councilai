@@ -15,6 +15,8 @@ It enforces:
 - Regulatory and compliance readiness
 - Auditability and traceability by design
 
+👉 **See it in action**: Check out the **[My Bottle Showcase](showcase/my-bottle/README.md)** to see how a project transforms from a prompt to a full governance trail.
+
 ---
 
 ## 🚀 Quick Start (Installation)
