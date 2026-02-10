@@ -48,9 +48,22 @@ Each step produces a versioned artifact.
 
 ---
 
-### Step 4 — Stop When Told
-If CouncilAI asks for escalation or council review — stop and do it.
-This is how governance works.
+## How CouncilAI Flows
+
+CouncilAI does not infer intent. **You declare it once, and the system enforces it.**
+
+### Artifact-Driven Execution
+
+1. You declare your product in `projects/<project-name>/project-context.md`
+2. Agents read this context and previous artifacts
+3. Each agent produces one artifact
+4. The next agent reads that artifact
+5. No hidden state, no assumptions
+
+### Learn More
+
+- **Agent Flow:** See [How Agents Build on Each Other](README.md#how-agents-build-on-each-other) in the README
+- **Full Example:** Follow the [Telehealth Bot Walkthrough](docs/walkthrough-telehealth-bot.md)
 
 ---
 
