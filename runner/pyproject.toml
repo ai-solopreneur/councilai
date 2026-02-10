@@ -11,6 +11,10 @@ openai = "^1.0.0"
 anthropic = "^0.40.0"
 python-dotenv = "^1.0.0"
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+pytest-mock = "^3.12.0"
+
 [tool.poetry.scripts]
 council = "council_runner.cli:app"
 

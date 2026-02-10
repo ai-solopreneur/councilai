@@ -59,6 +59,19 @@ council discovery
 # 4. Save to discovery.md
 ```
 
+### Custom Paths
+
+```bash
+# Specify custom project directory
+council discovery --project-dir /path/to/project
+
+# Specify custom output directory
+council discovery --output-dir /path/to/output
+
+# Use both
+council discovery --project-dir /path/to/project --output-dir /tmp/artifacts
+```
+
 ### Switch Providers
 
 ```bash
@@ -69,4 +82,13 @@ council discovery
 # Use Anthropic
 export COUNCIL_LLM_PROVIDER=anthropic
 council discovery
+```
+
+## Testing
+
+Run the test suite:
+
+```bash
+cd runner
+pytest tests/ -v
 ```
