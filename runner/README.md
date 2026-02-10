@@ -44,36 +44,107 @@ ANTHROPIC_API_KEY=sk-ant-...
 COUNCIL_ANTHROPIC_MODEL=claude-3-5-sonnet-20241022  # optional
 ```
 
-## Usage
+## Quick Start: New Application
 
-### Run an Agent
+Follow these steps in order to build a new application with CouncilAI:
+
+### Step 1: Create Your Project
 
 ```bash
-# From project root
-council discovery
+# Create project directory
+mkdir -p projects/my-app
 
-# This will:
-# 1. Read agents/discovery-agent.md
-# 2. Call your configured LLM
-# 3. Validate the output
-# 4. Save to discovery.md
+# Create project context (declare your product)
+cat > projects/my-app/project-context.md << 'EOF'
+# My Application
+
+## Problem
+[What problem are you solving?]
+
+## Solution
+[What are you building?]
+
+## Users
+[Who will use this?]
+
+## Compliance Needs
+[Any regulatory requirements? HIPAA, SOC2, GDPR, etc.]
+
+## Risk Tolerance
+[Low/Medium/High - how critical is this application?]
+EOF
 ```
+
+Edit `projects/my-app/project-context.md` with your actual project details.
+
+### Step 2: Run Discovery
+
+```bash
+council discovery --project my-app
+```
+
+This creates `projects/my-app/discovery.md` with stakeholder analysis and compliance mapping.
+
+### Step 3: Run PRD
+
+```bash
+council prd --project my-app
+```
+
+This creates `projects/my-app/prd.md` with product requirements based on discovery.
+
+### Step 4: Run Architecture
+
+```bash
+council architecture --project my-app
+```
+
+This creates `projects/my-app/architecture.md` with system design.
+
+### Step 5: Run Compliance
+
+```bash
+council compliance --project my-app
+```
+
+This creates `projects/my-app/compliance.md` with compliance controls.
+
+### Step 6: Run Testing Strategy
+
+```bash
+council testing --project my-app
+```
+
+This creates `projects/my-app/testing-strategy.md` with test plan.
+
+### Step 7: Review All Artifacts
+
+You now have a complete set of governance artifacts:
+- `project-context.md` — Product declaration
+- `discovery.md` — Stakeholder analysis
+- `prd.md` — Product requirements
+- `architecture.md` — System design
+- `compliance.md` — Compliance controls
+- `testing-strategy.md` — Test strategy
+
+**Next:** Convene a council review for high-risk decisions.
+
+---
+
+## Usage Reference
 
 ### Project-Scoped Execution (Recommended)
 
 Use `--project` to scope execution to a specific project:
 
 ```bash
-# Run discovery for a specific project
-council run discovery --project telehealth-bot
+# Run any agent for a specific project
+council <agent> --project <project-name>
 
-# This will:
-# 1. Read agents/discovery-agent.md (agent prompt)
-# 2. Read projects/telehealth-bot/project-context.md (project context)
-# 3. Inject context into the prompt
-# 4. Call your configured LLM
-# 5. Validate the output
-# 6. Save to projects/telehealth-bot/discovery.md
+# Examples:
+council discovery --project telehealth-bot
+council prd --project my-saas
+council architecture --project internal-tool
 ```
 
 **Requirements:**
