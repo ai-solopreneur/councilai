@@ -15,7 +15,9 @@ It enforces:
 - Regulatory and compliance readiness
 - Auditability and traceability by design
 
-👉 **See it in action**: Check out the **[My Bottle Showcase](showcase/my-bottle/README.md)** to see how a project transforms from a prompt to a full governance trail.
+👉 **See it in action**:
+- 🚜 **[My Bottle Showcase](showcase/my-bottle/README.md)**: A simple SaaS transformation.
+- 🏥 **[Telehealth Bot Showcase](showcase/telehealth-bot/README.md)**: Rigorous governance for regulated HealthTech.
 
 ---
 
@@ -118,6 +120,18 @@ release-governance.md
 3. **Fail-Fast Governance** — The `run-all` command will halt immediately if any agent fails or a compliance gate is blocked.
 
 4. **Human Final Authority** — Automation generates *proposals*. Production readiness requires a human to sign the `council-decisions.md` audit record.
+
+---
+
+## 🚀 Integration: Using with AI Coding Agents
+
+CouncilAI is the **Architect**. Coding Agents (Cursor, Windsurf, Devin, etc.) are the **Builders**.
+
+1.  **Generate Specs**: Run CouncilAI to create your `prd.md`, `architecture.md`, and `compliance.md`.
+2.  **Handoff**: Attach your `projects/<name>/` folder as context for your coding agent.
+3.  **Build**: Tell your coding agent to follow the artifacts strictly.
+
+See the **[AI Agent Handoff Guide](docs/agent-handoff.md)** for the Master Prompt template.
 
 ---
 
