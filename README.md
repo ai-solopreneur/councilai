@@ -48,6 +48,52 @@ Agents generate **proposals**, not final decisions.
 All irreversible, high-risk, or compliance-impacting actions require governance
 review and human approval.
 
+---
+
+## How Agents Build on Each Other
+
+CouncilAI agents execute in a **linear, artifact-driven flow**. Each agent reads approved artifacts from previous steps and produces a new artifact that becomes input for the next agent.
+
+### The Flow
+
+```
+project-context.md
+      ↓
+discovery.md
+      ↓
+prd.md
+      ↓
+architecture.md
+      ↓
+compliance.md
+      ↓
+testing-strategy.md
+      ↓
+council-review
+```
+
+### Key Principles
+
+1. **Agents Don't Chat** — Each agent has a single, well-defined responsibility. There is no back-and-forth conversation.
+
+2. **Artifacts Are Truth** — Agents only read approved, versioned artifacts. No hidden state, no inference.
+
+3. **Each Output Becomes Next Input** — The discovery agent's output (`discovery.md`) becomes input for the PRD agent. The PRD agent's output (`prd.md`) becomes input for the architecture agent. And so on.
+
+4. **No Skipping Steps** — Skipping steps breaks governance. If you skip discovery and jump to architecture, you lose traceability and compliance readiness.
+
+### When Council Review Is Required
+
+The **Council** (human decision-makers) must review and approve:
+- High-risk architectural decisions
+- Compliance-impacting changes
+- Release decisions
+- Escalations flagged by agents
+
+Council decisions are recorded in `council-decisions.md` and become part of the audit trail.
+
+---
+
 Each agent operates under a mandatory **Behavioral Safety Contract**.
 
 ---
