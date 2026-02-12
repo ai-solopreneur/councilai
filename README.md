@@ -60,6 +60,15 @@ Execute every agent from Discovery to Release Governance in one shot:
 council all --project fresh-market
 ```
 
+### 3-Minute Walkthrough
+
+1.  **Initialize**: `council init "A fitness app for seniors" --project senior-fit`
+    - Creates `projects/senior-fit/project-context.md`.
+2.  **Execute**: `council all --project senior-fit`
+    - Runs all 6 agents in sequence. Each agent produces a signed artifact in the project folder.
+3.  **Audit**: Review `projects/senior-fit/release-governance.md` for any compliance or architecture red flags.
+4.  **Sign-off**: Human orchestrator signs `projects/senior-fit/council-decisions.md` to move to the build phase.
+
 For detailed agent-by-agent control and technical setup, see the [Runner Documentation](runner/README.md).
 
 ---
@@ -95,23 +104,29 @@ CouncilAI agents execute in a **linear, artifact-driven flow**. Each agent reads
 ### The Automated Flow
 The `council all` command automates this sequence while maintaining human-in-the-loop safety:
 
+```text
+       [ Human Orchestrator ]
+                | (council all)
+                v
+       +--------------------+
+       |   Council Runner   | <--- [.env / API Keys]
+       +---------+----------+
+                 |
+        +--------+--------+
+        |                 |
+  [ project-context ]     |
+        |                 v
+        |        +-----------------+
+        +------> |  SDLC Agents    | (Discovery, PRD, Arch,
+                 | (Markdown Spec) |  Compliance, Testing,
+                 +--------+--------+  Governance)
+                          |
+                          v
+                 +-----------------+
+                 | Project Folder  | (Artifacts, Audit Trail,
+                 |   (Outputs)     |  Decision Records)
+                 +-----------------+
 ```
-project-context.md (Input)
-      ↓ discovery
-discovery.md
-      ↓ prd
-prd.md
-      ↓ architecture
-architecture.md
-      ↓ compliance
-compliance.md
-      ↓ testing
-testing.md
-      ↓ release-governance
-release-governance.md
-```
-
-### Key Principles
 
 1. **Explicit Declaration** — CouncilAI doesn't guess. You declare your intent in `project-context.md` (via `council init`) and the system enforces it.
 
@@ -167,6 +182,11 @@ See [START_HERE.md](START_HERE.md) for the onboarding journey.
 - AI-first startups preparing for enterprise adoption
 - Enterprise innovation teams
 - Regulated industries (FinTech, HealthTech, GovTech)
+
+### 🚩 Who This Is NOT For
+- **Autonomous Coders**: If you want a bot that writes and deploys code without you looking at it, CouncilAI is the wrong tool.
+- **Trivial Projects**: Simple scripts or personal blogs don't need this level of governance.
+- **Speed-Only Teams**: If you view documentation and compliance as "blockers" rather than "safety features," CouncilAI will feel too slow for you.
 
 ---
 
