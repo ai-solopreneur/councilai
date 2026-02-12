@@ -4,6 +4,7 @@ This showcase demonstrates how CouncilAI transforms a brief product spark into a
 
 ## 🚀 The Input
 **The Idea:** "A mobile/web app for bars that lets customers purchase full bottles and track consumption across multiple visits to save money and reduce waste."
+
 **Command:** `council init "A mobile/web app for bars that lets customers purchase full bottles and track consumption across multiple visits" --project my-bottle`
 
 ---
