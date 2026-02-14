@@ -104,30 +104,6 @@ CouncilAI agents execute in a **linear, artifact-driven flow**. Each agent reads
 ### The Automated Flow
 The `council all` command automates this sequence while maintaining human-in-the-loop safety:
 
-```text
-       [ Human Orchestrator ]
-                | (council all)
-                v
-       +--------------------+
-       |   Council Runner   | <--- [.env / API Keys]
-       +---------+----------+
-                 |
-        +--------+--------+
-        |                 |
-  [ project-context ]     |
-        |                 v
-        |        +-----------------+
-        +------> |  SDLC Agents    | (Discovery, PRD, Arch,
-                 | (Markdown Spec) |  Compliance, Testing,
-                 +--------+--------+  Governance)
-                          |
-                          v
-                 +-----------------+
-                 | Project Folder  | (Artifacts, Audit Trail,
-                 |   (Outputs)     |  Decision Records)
-                 +-----------------+
-```
-
 ![alt text](the_automated_flow.png)
 
 1. **Explicit Declaration** — CouncilAI doesn't guess. You declare your intent in `project-context.md` (via `council init`) and the system enforces it.
