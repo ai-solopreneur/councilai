@@ -128,6 +128,8 @@ The `council all` command automates this sequence while maintaining human-in-the
                  +-----------------+
 ```
 
+![alt text](image.png)
+
 1. **Explicit Declaration** — CouncilAI doesn't guess. You declare your intent in `project-context.md` (via `council init`) and the system enforces it.
 
 2. **Artifacts Are Truth** — Agents only read approved, versioned artifacts. No hidden state.
