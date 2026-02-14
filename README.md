@@ -128,7 +128,7 @@ The `council all` command automates this sequence while maintaining human-in-the
                  +-----------------+
 ```
 
-![alt text](image.png)
+![alt text](the_automated_flow.png)
 
 1. **Explicit Declaration** — CouncilAI doesn't guess. You declare your intent in `project-context.md` (via `council init`) and the system enforces it.
 
