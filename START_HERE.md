@@ -19,7 +19,10 @@ It helps you use AI safely, consistently, and auditably.
 Before you can run CouncilAI agents, you must set up the environment:
 
 1. **Activate Virtual Env**: `source test_env/bin/activate`
-2. **Setup LLM Config**: Ensure `runner/.env` has your API keys.
+2. **Setup LLM Config**: 
+   - `cp runner/.env.example runner/.env`
+   - Edit `runner/.env` and add your `OPENAI_API_KEY` or `ANTHROPIC_API_KEY`.
+   - Set `COUNCIL_LLM_PROVIDER` to either `openai` or `anthropic`.
 3. **Verify Installation**: Run `council --help` to ensure the CLI is available.
 
 See the [Root README](README.md#🚀-quick-start-installation) for full setup instructions.

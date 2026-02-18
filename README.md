@@ -43,7 +43,17 @@ pip install -e runner/
 Create a `.env` file in the `runner/` directory with your API keys.
 ```bash
 cp runner/.env.example runner/.env
-# Edit runner/.env with your OpenAI or Anthropic keys
+```
+Edit `runner/.env` and add your keys:
+```env
+# Choose: "openai" or "anthropic"
+COUNCIL_LLM_PROVIDER=openai
+
+# If using OpenAI
+OPENAI_API_KEY=sk-...
+
+# If using Anthropic
+ANTHROPIC_API_KEY=sk-ant-...
 ```
 
 ### 3. Initialize Your Project
