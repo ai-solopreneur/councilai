@@ -24,12 +24,18 @@ class Config:
         if provider == "openai":
             key = os.getenv("OPENAI_API_KEY")
             if not key:
-                raise ValueError("OPENAI_API_KEY environment variable not set")
+                raise ValueError(
+                    "❌ OPENAI_API_KEY not found.\n"
+                    "👉 To fix: Add 'OPENAI_API_KEY=sk-...' to your runner/.env file."
+                )
             return key
         elif provider == "anthropic":
             key = os.getenv("ANTHROPIC_API_KEY")
             if not key:
-                raise ValueError("ANTHROPIC_API_KEY environment variable not set")
+                raise ValueError(
+                    "❌ ANTHROPIC_API_KEY not found.\n"
+                    "👉 To fix: Add 'ANTHROPIC_API_KEY=sk-ant-...' to your runner/.env file."
+                )
             return key
         else:
             raise ValueError(f"Unknown provider: {provider}")

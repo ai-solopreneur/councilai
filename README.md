@@ -4,6 +4,9 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ai-solopreneur/councilai)
 [![SDLC-Governance](https://img.shields.io/badge/SDLC-Governance-orange.svg)](#)
+[![Works with Claude](https://img.shields.io/badge/Works%20with-Claude-7f52ff.svg)](#)
+[![Works with GPT-4o](https://img.shields.io/badge/Works%20with-GPT--4o-41b883.svg)](#)
+[![Works with o1](https://img.shields.io/badge/Works%20with-o1-000000.svg)](#)
 
 ## Overview
 CouncilAI is a governance-first, compliance-aware, multi-agent AI system designed
@@ -23,6 +26,9 @@ It enforces:
 👉 **See it in action**:
 - 🚜 **[My Bottle Showcase](showcase/my-bottle/README.md)**: A simple SaaS transformation.
 - 🏥 **[Telehealth Bot Showcase](showcase/telehealth-bot/README.md)**: Rigorous governance for regulated HealthTech.
+- 💸 **[Rural Micro-lending](showcase/rural-micro-lending/README.md)**: FinTech KYC & Risk governance.
+- 🍏 **[Children's EdTech](showcase/children-privacy-edtech/README.md)**: Heavy COPPA/Privacy compliance.
+- 📊 **[Modern SaaS CRM](showcase/saas-crm/README.md)**: Standard multi-tenant SaaS.
 
 ---
 

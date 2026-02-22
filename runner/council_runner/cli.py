@@ -1,5 +1,20 @@
 import typer
-from council_runner.runner import run_agent
+from rich.console import Console
+from council_runner.runner import run_agent, run_demo
+
+console = Console()
+
+BANNER = """
+[bold cyan]
+  _____                         _ _         _____ 
+ / ____|                       (_) |   /\  |_   _|
+| |     ___  _   _ _ __   ___ _ _| |  /  \   | |  
+| |    / _ \| | | | '_ \ / __| | | | / /\ \  | |  
+| |___| (_) | |_| | | | | (__| | | |/ ____ \_| |_ 
+ \_____\___/ \__,_|_| |_|\___|_|_|_/_/    \_\_____|
+[/bold cyan]
+[dim]AI-Driven SDLC Governance Meta-System[/dim]
+"""
 
 app = typer.Typer(
     help="""
@@ -10,6 +25,12 @@ app = typer.Typer(
     """,
     add_completion=False
 )
+
+@app.callback(invoke_without_command=True)
+def main(ctx: typer.Context):
+    if ctx.invoked_subcommand is None:
+        console.print(BANNER)
+        console.print(ctx.get_help())
 
 @app.command()
 def run(
@@ -76,17 +97,17 @@ def all_agents(
     """
     Run the full CouncilAI agent lifecycle in one shot.
     Sequence: Discovery -> PRD -> Architecture -> Compliance -> Testing -> Release-Governance.
-    
-    Examples:
-    
-    1. Run full lifecycle for my project:
-       $ council all --project my-app
-    
-    2. Using the -p shortcut:
-       $ council all -p my-app
     """
     from council_runner.runner import run_all_agents
     run_all_agents(project)
+
+@app.command()
+def demo():
+    """
+    Run a one-click CouncilAI demo using the 'My Bottle' showcase.
+    This will copy the showcase to 'demo-run/' and open the folder.
+    """
+    run_demo()
 
 if __name__ == "__main__":
     app()

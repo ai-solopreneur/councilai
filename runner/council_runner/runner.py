@@ -1,7 +1,15 @@
+import shutil
+import subprocess
+import sys
+import time
 from pathlib import Path
 from typing import Optional
+from rich.console import Console
+from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TaskProgressColumn
 from council_runner.llm import call_llm
 from council_runner.validation import validate_output
+
+console = Console()
 
 def run_agent(
     agent: str, 
@@ -80,19 +88,19 @@ def run_agent(
     else:
         full_prompt = agent_prompt
 
-    print(f"🤖 Invoking {agent} agent...")
+    console.print(f"[bold blue]🤖 Invoking {agent} agent...[/bold blue]")
     if project:
-        print(f"   Project: {project}")
+        console.print(f"   Project: {project}")
     
     output = call_llm(full_prompt)
 
-    print(f"🔍 Validating output...")
+    console.print(f"[yellow]🔍 Validating output...[/yellow]")
     validate_output(agent, output)
 
     with open(output_file, "w") as f:
         f.write(output)
 
-    print(f"✅ {agent} completed successfully. Output saved to {output_file}")
+    console.print(f"[green]✅ {agent} completed successfully.[/green] Output saved to [bold]{output_file}[/bold]")
     return True
 
 def init_project(prompt: str, project: str) -> bool:
@@ -141,15 +149,58 @@ def run_all_agents(project: str):
     """
     agents = ["discovery", "prd", "architecture", "compliance", "testing", "release-governance"]
     
-    print(f"🏁 Starting full CouncilAI lifecycle for project: {project}")
+    console.print(f"[bold magenta]🏁 Starting full CouncilAI lifecycle for project: {project}[/bold magenta]")
     
-    for agent in agents:
-        print("-" * 40)
-        success = run_agent(agent, project=project)
-        if not success:
-            print(f"⛔ Lifecycle halted due to failure in {agent} agent.")
-            return
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        BarColumn(),
+        TaskProgressColumn(),
+        console=console,
+    ) as progress:
+        overall_task = progress.add_task("[cyan]Overall Progress", total=len(agents))
+        
+        for agent in agents:
+            progress.update(overall_task, description=f"[bold green]Running {agent} agent...")
+            success = run_agent(agent, project=project)
+            if not success:
+                console.print(f"[bold red]⛔ Lifecycle halted due to failure in {agent} agent.[/bold red]")
+                return
+            progress.advance(overall_task)
 
-    print("=" * 40)
-    print(f"🎉 Full lifecycle complete for project: {project}")
+    console.print("=" * 40)
+    console.print(f"[bold green]🎉 Full lifecycle complete for project: {project}[/bold green]")
+
+def run_demo():
+    """
+    Run a demo by copying an existing showcase and opening it.
+    """
+    base_path = Path.cwd()
+    demo_dest = base_path / "demo-run"
+    showcase_src = base_path / "showcase" / "my-bottle"
+
+    console.print("[bold yellow]🚀 Launching CouncilAI Demo...[/bold yellow]")
+    
+    if demo_dest.exists():
+        shutil.rmtree(demo_dest)
+    
+    shutil.copytree(showcase_src, demo_dest)
+    
+    console.print(f"[green]✨ Demo project established in:[/green] [bold]{demo_dest}[/bold]")
+    console.print("[blue]📂 Opening demo folder...[/blue]")
+
+    # Cross-platform open
+    try:
+        project_to_open = demo_dest
+        if sys.platform == "darwin":
+            subprocess.run(["open", str(project_to_open)])
+        elif sys.platform == "win32":
+            os.startfile(project_to_open)
+        else:
+            subprocess.run(["xdg-open", str(project_to_open)])
+    except Exception as e:
+        console.print(f"[red]Could not open folder automatically: {e}[/red]")
+    
+    console.print("\n[bold green]Try running:[/bold green]")
+    console.print(f"council all --project demo-run (if you have API keys set up)")
 
