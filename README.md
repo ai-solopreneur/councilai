@@ -1,5 +1,10 @@
 # CouncilAI – AI-Driven SDLC Meta-System
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ai-solopreneur/councilai)
+[![SDLC-Governance](https://img.shields.io/badge/SDLC-Governance-orange.svg)](#)
+
 ## Overview
 CouncilAI is a governance-first, compliance-aware, multi-agent AI system designed
 to execute the full Software Development Lifecycle (SDLC) with enterprise-grade rigor.
@@ -22,6 +27,10 @@ It enforces:
 ---
 
 ## 🚀 Quick Start (Installation)
+
+> **One-Click Setup**: You can run this project immediately in your browser using GitHub Codespaces.
+> [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ai-solopreneur/councilai)
+
 
 To get started with CouncilAI, you need to set up the execution runner.
 
@@ -104,6 +113,48 @@ CouncilAI is composed of specialized AI agents:
 - **Compliance Agent**: Maps requirements to regulatory controls.
 - **Testing Agent**: Creates strategy and traceability for verification.
 - **Release & Governance Agent**: Audits the entire trail before final sign-off.
+
+---
+
+## 🏗 Technical Architecture
+
+CouncilAI uses a state-machine inspired artifact flow. Each agent is a specialized transformer that consumes the output of its predecessor.
+
+```mermaid
+graph TD
+    User((Human Orchestrator)) -->|1. Initiate| Init[council init]
+    Init --> Context[project-context.md]
+    
+    subgraph "The Council Loop"
+        Context --> Discovery[Discovery Agent]
+        Discovery --> DiscoveryArt[discovery.md]
+        
+        DiscoveryArt --> PRD[PRD Agent]
+        PRD --> PRDArt[prd.md]
+        
+        PRDArt --> Arch[Architecture Agent]
+        Arch --> ArchArt[architecture.md]
+        
+        ArchArt --> Compliance[Compliance Agent]
+        Compliance --> CompArt[compliance.md]
+        
+        CompArt --> Testing[Testing Agent]
+        Testing --> TestArt[testing.md]
+        
+        TestArt --> Governance[Governance Agent]
+        Governance --> GovArt[release-governance.md]
+    end
+    
+    GovArt --> Audit[Evidence/Audit Trail]
+    Audit --> Decision[council-decisions.md]
+    Decision --> User
+    User -->|2. Sign-off| Release[Build-Ready Specs]
+    
+    style User fill:#f9f,stroke:#333,stroke-width:4px
+    style Release fill:#00ff00,stroke:#333,stroke-width:2px
+    style Init fill:#bbf,stroke:#333
+```
+
 
 ---
 
