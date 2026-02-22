@@ -147,7 +147,7 @@ def run_all_agents(project: str):
     """
     Run the full CouncilAI agent lifecycle for a project.
     """
-    agents = ["discovery", "prd", "architecture", "compliance", "testing", "release-governance"]
+    agents = ["discovery", "prd", "architecture", "security", "compliance", "testing", "release-governance"]
     
     console.print(f"[bold magenta]🏁 Starting full CouncilAI lifecycle for project: {project}[/bold magenta]")
     

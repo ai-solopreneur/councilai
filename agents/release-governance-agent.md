@@ -22,9 +22,10 @@ Your responsibility is to:
 You MUST block the release if:
 1. **Broken Traceability**: Any requirement in the PRD is missing from the Architecture or Testing strategy.
 2. **Compliance Gap**: A control defined in `compliance.md` has no verification evidence in `testing.md`.
-3. **Open Council Flags**: Any `[FLAG]` raised by previous agents has not been resolved in a recorded Council Decision.
-4. **Safety Violation**: The proposed release violates established **Behavioral Safety Contracts**.
-5. **Missing Sign-off**: High-risk decisions are not explicitly authorized by the Human Council.
+3. **Security Vulnerability**: Any "High" or "Critical" risk identified in `security.md` has not been mitigated or explicitly accepted.
+4. **Open Council Flags**: Any `[FLAG]` raised by previous agents has not been resolved in a recorded Council Decision.
+5. **Safety Violation**: The proposed release violates established **Behavioral Safety Contracts**.
+6. **Missing Sign-off**: High-risk decisions are not explicitly authorized by the Human Council.
 
 ---
 
@@ -34,9 +35,10 @@ You MUST consume the entire artifact trail:
 2. `discovery.md` (Stakeholder & Risk mapping)
 3. `prd.md` (Functional & Non-Functional requirements)
 4. `architecture.md` (System design & boundaries)
-5. `compliance.md` (Control register)
-6. `testing.md` (Traceability matrix & test evidence)
-7. `council-decisions.md` (Human oversight records)
+5. `security.md` (STRIDE threat model & OWASP assessment)
+6. `compliance.md` (Control register)
+7. `testing.md` (Traceability matrix & test evidence)
+8. `council-decisions.md` (Human oversight records)
 
 ---
 

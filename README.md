@@ -116,6 +116,7 @@ CouncilAI is composed of specialized AI agents:
 - **Discovery Agent**: Maps stakeholders, goals, and initial risks.
 - **PRD Agent**: Translates vision into functional requirements.
 - **Architecture Agent**: Designs the system and identifies technical tradeoffs.
+- **Security Agent**: Conducts STRIDE threat modeling and OWASP vulnerability mapping.
 - **Compliance Agent**: Maps requirements to regulatory controls.
 - **Testing Agent**: Creates strategy and traceability for verification.
 - **Release & Governance Agent**: Audits the entire trail before final sign-off.
@@ -141,7 +142,10 @@ graph TD
         PRDArt --> Arch[Architecture Agent]
         Arch --> ArchArt[architecture.md]
         
-        ArchArt --> Compliance[Compliance Agent]
+        ArchArt --> Security[Security Agent]
+        Security --> SecurityArt[security.md]
+        
+        SecurityArt --> Compliance[Compliance Agent]
         Compliance --> CompArt[compliance.md]
         
         CompArt --> Testing[Testing Agent]

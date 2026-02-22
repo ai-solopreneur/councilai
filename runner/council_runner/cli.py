@@ -96,7 +96,7 @@ def all_agents(
 ):
     """
     Run the full CouncilAI agent lifecycle in one shot.
-    Sequence: Discovery -> PRD -> Architecture -> Compliance -> Testing -> Release-Governance.
+    Sequence: Discovery -> PRD -> Architecture -> Security -> Compliance -> Testing -> Release-Governance.
     """
     from council_runner.runner import run_all_agents
     run_all_agents(project)
