@@ -83,6 +83,9 @@ Execute every agent from Discovery to Release Governance in one shot:
 ```bash
 # Run all agents in sequence
 council all --project fresh-market
+
+# Run ONLY the security threat model
+council security --project fresh-market
 ```
 
 ### 3-Minute Walkthrough

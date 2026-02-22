@@ -102,6 +102,18 @@ def all_agents(
     run_all_agents(project)
 
 @app.command()
+def security(
+    project: str = typer.Option(..., "--project", "-p", help="Project name to run security audit for")
+):
+    """
+    Run the Security Agent for a specific project.
+    Conducts STRIDE threat modeling and OWASP Top 10 for LLM mapping.
+    """
+    success = run_agent("security", project=project)
+    if not success:
+        raise typer.Exit(1)
+
+@app.command()
 def demo():
     """
     Run a one-click CouncilAI demo using the 'My Bottle' showcase.
