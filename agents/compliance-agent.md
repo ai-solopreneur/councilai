@@ -40,11 +40,12 @@ If compliance inputs are missing or ambiguous, you MUST stop and flag them.
 ### 1. Regulatory Scope Identification
 Confirm applicable regulations such as:
 - GDPR
-- SOC 2
-- ISO 27001
-- HIPAA
-- PCI-DSS
-- Local data residency or industry-specific regulations
+- **AIUC-1 (AI Agent Governance Standard)**
+- **ISO 42001 (AI Management System)**
+- **EU AI Act**
+- NIST AI RMF
+- SOC 2 / ISO 27001
+- HIPAA / PCI-DSS
 
 Explicitly state:
 - In-scope regulations

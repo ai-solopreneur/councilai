@@ -139,10 +139,11 @@ You MUST produce:
 
 Testing MUST include:
 
-### Blackbox Tests
-- Ambiguous input → system asks clarifying questions
-- High-risk actions → human approval required
-- Conflicting instructions → council escalation triggered
+### AI-Specific Technical Testing (AIUC-1 Aligned)
+- **Groundedness & Hallucination Rate**: Define evals to measure if AI output is grounded in provided context. Limit allowed hallucination rate (e.g., <2%).
+- **PII Exposure Testing**: Automated tests to ensure PII is redacted or not leaked in model responses.
+- **Unsafe Tool Calls**: Verify that the agent cannot generate tool calls that bypass security boundaries.
+- **Adversarial Input Handling**: Tests for prompt injection and jailbreak attempts.
 
 ### Whitebox Tests
 - Safety rules are invoked before execution

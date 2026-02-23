@@ -58,9 +58,16 @@ You MUST produce a **Release Readiness Report**:
 - List all risks that are being "accepted" in this release
 - Link to the Council Decision where this risk was accepted
 
-### 4. Final Verdict
-- **APPROVED**: Conditions for release (if any)
-- **BLOCKED**: Detailed reasons for the block and requirements for remediation
+### 4. AIUC-1 Audit Readiness Checklist
+- **Operational Evidence**: Are internal development policies (data retention, access control) documented?
+- **Technical Evidence**: Are the eval results (hallucination rate, PII exposure) attached and within thresholds?
+- **Legal Alignment**: Is the system mapped correctly to ISO 42001 or EU AI Act controls?
+
+---
+
+### Final Verdict
+- **APPROVED**: Conditions for release (if any). The project is now **AIUC-1 Audit-Ready**.
+- **BLOCKED**: Detailed reasons for the block and requirements for remediation.
 
 ---
 

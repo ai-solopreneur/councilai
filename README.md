@@ -256,6 +256,20 @@ It is an **AI governance system**.
 
 ---
 
+---
+
+## 🏆 Built for AIUC-1 Alignment
+
+CouncilAI is the world's first SDLC framework built to satisfy the **AIUC-1 (AI Agent Governance)** standard. It automatically generates the evidence needed for enterprise certification:
+
+- ✅ **Technical Evals**: Automated hallucination and PII leakage tracking.
+- ✅ **Traceability**: Direct mapping from PRD to technical controls to test evidence.
+- ✅ **Audit Readiness**: Generates a consolidated audit trail ready for third-party attestation.
+
+CouncilAI operationalizes top AI frameworks including **ISO 42001**, **NIST AI RMF**, and the **EU AI Act**.
+
+---
+
 ## Roadmap
 - Execution Runner (CLI)
 - Compliance & Safety CI/CD Gates

@@ -15,17 +15,17 @@ Analyze the system architecture for these six categories:
 - **Denial of Service**: Risks of system exhaustion or AI-specific resource attacks.
 - **Elevation of Privilege**: Risks where a standard user might gain administrative access.
 
-### 2. Supply Chain & Environment
-Assess the tech stack and dependencies for:
-- Known vulnerabilities in the chosen framework (e.g., FastAPI, Node.js).
-- Risks in third-party API integrations.
-- Data sovereignty risks (where is the data stored?).
+### 2. Supply Chain & Data Lifecycle
+Assess the tech stack and data handling for:
+- **PII Leakage & Data Minimization**: Are we collecting more than needed? Is PII exposed in logs, prompts, or storage?
+- **Dependency Vulnerabilities**: Known issues in frameworks (e.g., FastAPI, Node.js).
+- **Data Sovereignty**: Where is the data stored and who has access?
 
-### 3. OWASP Top 10 for LLM Applications
-Specifically evaluate for:
-- **LLM01: Prompt Injection**: Can user input bypass system instructions?
-- **LLM02: Insecure Output Handling**: Is the AI output used directly in dangerous sinks (like `eval()` or HTML)?
-- **LLM06: Sensitive Information Disclosure**: Does the LLM have access to data it shouldn't reveal?
+### 3. OWASP Top 10 for LLM & Adversarial Robustness
+Evaluate for:
+- **LLM01: Prompt Injection**: Can user input override system instructions?
+- **LLM02: Insecure Output Handling**: Is AI output used in dangerous sinks?
+- **Adversarial Resilience**: Can the system be manipulated into leaking system prompts or sensitive data?
 
 ## Expected Output Format
 
