@@ -175,7 +175,13 @@ def run_demo():
     """
     Run a demo by copying an existing showcase and opening it.
     """
+    # Find repository root
     base_path = Path.cwd()
+    if (base_path / "runner").exists():
+        pass # Already at root
+    elif base_path.name == "runner":
+        base_path = base_path.parent
+    
     demo_dest = base_path / "demo-run"
     showcase_src = base_path / "showcase" / "my-bottle"
 
