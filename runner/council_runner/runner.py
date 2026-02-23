@@ -2,8 +2,10 @@ import shutil
 import subprocess
 import sys
 import time
+import json
+import os
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TaskProgressColumn
 from council_runner.llm import call_llm
@@ -27,29 +29,50 @@ def run_agent(
         output_dir: Custom directory to write output files
     """
     # Project-scoped execution
+    policy_pack_instructions = None
     if project:
         base_path = Path.cwd()
+        if (base_path / "runner").exists():
+            pass # Already at root
+        elif base_path.name == "runner":
+            base_path = base_path.parent
+
         project_path = base_path / "projects" / project
         
         # Verify project directory exists
         if not project_path.exists():
-            print(f"❌ Error: Project directory not found: {project_path}")
-            print(f"   Create it first: council init \"Your Idea\" --project {project}")
+            console.print(f"❌ Error: Project directory not found: {project_path}")
+            console.print(f"   Create it first: council init \"Your Idea\" --project {project}")
             return False
         
+        # Load configuration (Policy Pack)
+        config_file = project_path / ".council-config.json"
+        if config_file.exists():
+            try:
+                with open(config_file, "r") as f:
+                    config = json.load(f)
+                    template = config.get("template")
+                    if template:
+                        pack_path = base_path / "policy-packs" / template / f"{agent}-agent.md"
+                        if pack_path.exists():
+                            with open(pack_path, "r") as f:
+                                policy_pack_instructions = f.read()
+            except Exception as e:
+                console.print(f"⚠️ Warning: Could not read policy pack config: {e}")
+
         # Read project context
         context_file = project_path / "project-context.md"
         if not context_file.exists():
-            print(f"❌ Error: Project context not found: {context_file}")
-            print(f"   Create it first to declare your project scope and requirements.")
-            print(f"   Run: council init \"Your Idea\" --project {project}")
+            console.print(f"❌ Error: Project context not found: {context_file}")
+            console.print(f"   Create it first to declare your project scope and requirements.")
+            console.print(f"   Run: council init \"Your Idea\" --project {project}")
             return False
         
         try:
             with open(context_file, "r") as f:
                 project_context = f.read()
         except Exception as e:
-            print(f"❌ Error reading project context: {e}")
+            console.print(f"❌ Error reading project context: {e}")
             return False
         
         # Set paths for project-scoped execution
@@ -70,27 +93,26 @@ def run_agent(
         with open(agent_prompt_path, "r") as f:
             agent_prompt = f.read()
     except FileNotFoundError:
-        print(f"❌ Error: Agent definition not found at {agent_prompt_path}")
+        console.print(f"❌ Error: Agent definition not found at {agent_prompt_path}")
         return False
 
     # Build full prompt
+    sections = []
     if project_context:
-        full_prompt = f"""# Project Context
-
-{project_context}
-
----
-
-# Agent Instructions
-
-{agent_prompt}
-"""
-    else:
-        full_prompt = agent_prompt
+        sections.append(f"# Project Context\n\n{project_context}")
+    
+    if policy_pack_instructions:
+        sections.append(f"# Industry Policy Pack Instructions\n\n{policy_pack_instructions}")
+        
+    sections.append(f"# Agent Instructions\n\n{agent_prompt}")
+    
+    full_prompt = "\n\n---\n\n".join(sections)
 
     console.print(f"[bold blue]🤖 Invoking {agent} agent...[/bold blue]")
     if project:
         console.print(f"   Project: {project}")
+    if policy_pack_instructions:
+        console.print(f"   🛡️ Policy Pack: [bold yellow]Active[/bold yellow]")
     
     output = call_llm(full_prompt)
 
@@ -103,27 +125,50 @@ def run_agent(
     console.print(f"[green]✅ {agent} completed successfully.[/green] Output saved to [bold]{output_file}[/bold]")
     return True
 
-def init_project(prompt: str, project: str) -> bool:
+def init_project(prompt: str, project: str, template: Optional[str] = None) -> bool:
     """
     Initialize a new project by generating project-context.md from a prompt.
     """
+    # Find repository root
     base_path = Path.cwd()
+    if (base_path / "runner").exists():
+        pass # Already at root
+    elif base_path.name == "runner":
+        base_path = base_path.parent
+
     project_path = base_path / "projects" / project
     agent_prompt_path = base_path / "agents" / "init-agent.md"
     output_file = project_path / "project-context.md"
+    config_file = project_path / ".council-config.json"
+
+    # Validate template if provided
+    if template:
+        template_path = base_path / "policy-packs" / template
+        if not template_path.exists():
+            console.print(f"❌ Error: Policy pack template '{template}' not found at {template_path}")
+            console.print("👉 Available templates: hipaa, soc2, pci-dss")
+            return False
 
     # Read init agent prompt
     try:
         with open(agent_prompt_path, "r") as f:
             agent_prompt = f.read()
     except FileNotFoundError:
-        print(f"❌ Error: Init agent definition not found at {agent_prompt_path}")
+        console.print(f"❌ Error: Init agent definition not found at {agent_prompt_path}")
         return False
 
     # Create project directory
     project_path.mkdir(parents=True, exist_ok=True)
 
-    print(f"🚀 Initializing project: {project}...")
+    # Save configuration
+    config = {"project": project, "template": template}
+    with open(config_file, "w") as f:
+        json.dump(config, f, indent=4)
+
+    console.print(f"🚀 Initializing project: [bold]{project}[/bold]...")
+    if template:
+        console.print(f"🛡️ Applying [bold]{template}[/bold] Policy Pack...")
+
     full_prompt = f"""# User Intent
 
 {prompt}
@@ -139,8 +184,8 @@ def init_project(prompt: str, project: str) -> bool:
     with open(output_file, "w") as f:
         f.write(output)
 
-    print(f"✨ Project initialized. Context saved to {output_file}")
-    print(f"👉 Next step: council discovery --project {project}")
+    console.print(f"✨ Project initialized. Context saved to [bold]{output_file}[/bold]")
+    console.print(f"👉 Next step: council discovery --project {project}")
     return True
 
 def run_all_agents(project: str):

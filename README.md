@@ -81,12 +81,18 @@ council init "Marketplace for locally sourced vegetables" --project fresh-market
 ### 4. Run the Full Lifecycle
 Execute every agent from Discovery to Release Governance in one shot:
 ```bash
-# Run all agents in sequence
-council all --project fresh-market
+# Declare a new project (e.g., HIPAA template)
+council init "Telehealth app" --project clinic-bot --template hipaa
 
-# Run ONLY the security threat model
-council security --project fresh-market
+# Run all agents in sequence
+council all --project clinic-bot
 ```
+
+### 🎯 Industry Policy Packs
+CouncilAI supports pre-configured governance for high-risk sectors. Use the `--template` flag during `init` to automatically apply specialized instructions:
+- `hipaa`: PHI protection, BAA management, and healthcare safeguards.
+- `soc2`: AICPA Trust Services Criteria (Security, Availability, Confidentiality).
+- `pci-dss`: Cardholder Data Environment (CDE) security and PCI-DSS v4.0.
 
 ### 3-Minute Walkthrough
 

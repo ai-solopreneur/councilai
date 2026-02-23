@@ -71,7 +71,8 @@ def run(
 @app.command()
 def init(
     prompt: str = typer.Argument(..., help="Brief description of the project you want to build"),
-    project: str = typer.Option(..., "--project", "-p", help="Project name (will create projects/<name>/)")
+    project: str = typer.Option(..., "--project", "-p", help="Project name (will create projects/<name>/)"),
+    template: str = typer.Option(None, "--template", "-t", help="Industry Policy Pack (e.g., hipaa, soc2, pci-dss)")
 ):
     """
     Initialize a new project context from a brief idea. 
@@ -82,11 +83,11 @@ def init(
     1. Simple initialization:
        $ council init "A marketplace for fresh vegetables" -p fresh-market
     
-    2. Detailed initialization:
-       $ council init "HIPAA-compliant telehealth app with AI triage" -p health-bot
+    2. Detailed initialization (HIPAA Pack):
+       $ council init "Telehealth app with AI triage" -p health-bot -t hipaa
     """
     from council_runner.runner import init_project
-    success = init_project(prompt, project)
+    success = init_project(prompt, project, template=template)
     if not success:
         raise typer.Exit(1)
 
